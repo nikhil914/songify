@@ -61,6 +61,24 @@ $('.welcome-screen button').on('click', function() {
 }
 });
         
+$('.play-icon').on('click',function() {
+  var song = document.querySelector('audio');
+    
+  if(song.paused == true) {
+    console.log('Playing');
+  $('.play-icon').removeClass('fa-play');
+  $('.play-icon').addClass('fa-pause');
+    song.play();
+  }
+  else {
+    console.log('Pausing');
+     $('.play-icon').removeClass('fa-pause');
+  $('.play-icon').addClass('fa-play');
+    song.pause();
+  }
+}); 
+
+        
 </script>
 </body>
 
