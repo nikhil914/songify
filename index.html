@@ -32,7 +32,7 @@
         <header> <div class="right floated user-name">  </div> </header>
         <section class="content">
            <div class="content">
-  <audio src="song.mp3" controls=""></audio>
+  <audio src="song.mp3"  ></audio>
     
 </div>
         </section>
@@ -60,7 +60,7 @@ $('.welcome-screen button').on('click', function() {
   $('#name-input').addClass('error');
 }
 });
-        
+
 $('.play-icon').on('click',function() {
   var song = document.querySelector('audio');
     
@@ -76,6 +76,25 @@ $('.play-icon').on('click',function() {
   $('.play-icon').addClass('fa-play');
     song.pause();
   }
+}); 
+$('body').on('keypress',function(event) {
+    if (event.keyCode == 32)
+        {
+  var song = document.querySelector('audio');
+    
+  if(song.paused == true) {
+    console.log('Playing');
+  $('.play-icon').removeClass('fa-play');
+  $('.play-icon').addClass('fa-pause');
+    song.play();
+  }
+  else {
+    console.log('Pausing');
+     $('.play-icon').removeClass('fa-pause');
+  $('.play-icon').addClass('fa-play');
+    song.pause();
+  }
+        }
 }); 
 
         
