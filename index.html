@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <style>
+    
     error {
       border: 2px solid red;
   }
@@ -26,79 +27,95 @@
                 <input type="text" placeholder="Name" id="name-input">
                 <button> Go </button>
             </div>
-            
         </section>
         <div class="main hidden">
-        <header> <div class="right floated user-name">  </div> </header>
-        <section class="content">
-           <div class="content">
-  <audio src="song.mp3"  ></audio>
-    
-</div>
-        </section>
-        <footer> 
-        <div class="controls">
-        <i class="fa fa-play clickable play-icon" aria-hidden="true"></i>
+            <header>
+                <div class="right floated user-name"> </div>
+            </header>
+            <section class="content">
+                <audio src="song.mp3"></audio>
+                <div class="list-headers">
+        <div> Title </div> 
+        <div> Artist </div>
+        <div> Album </div>
+        <div> Duration </div>
         </div>
-        </footer>
+        <div class="song-list">
+        <div class="song">
+        <span class="song-name"></span>
+        <span class="song-artist"></span>
+        <span class="song-album"></span>
+        <span class="song-length"></span>
+        </div>
+        </div>
+            </section>
+            <footer>
+                <div class="controls">
+                    <div class="player-buttons">
+                        <i class="fa fa-play clickable play-icon" aria-hidden="true"></i>
+                    </div>
+                    <div class="progress-wrapper">
+                        <span class="time-elapsed"> </span>
+                        <div class="player-progress">
+                            <div class="progress-filled"> </div>
+                        </div>
+                        <span class="song-duration"></span>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
     <script src="jquery.js">
     </script>
-    
     <script>
-$('.welcome-screen button').on('click', function() {
-  var name = $('#name-input').val();
-
-  if(name.length > 2) {
-    var message = "Welcome, " +  name;
-    $('.main .user-name').text(message);
-    $('.welcome-screen').addClass('hidden');
-    $('.main').removeClass('hidden');
-  }
-    else {
-  $('#name-input').addClass('error');
-}
-});
-
-$('.play-icon').on('click',function() {
-  var song = document.querySelector('audio');
-    
-  if(song.paused == true) {
-    console.log('Playing');
-  $('.play-icon').removeClass('fa-play');
-  $('.play-icon').addClass('fa-pause');
-    song.play();
-  }
-  else {
-    console.log('Pausing');
-     $('.play-icon').removeClass('fa-pause');
-  $('.play-icon').addClass('fa-play');
-    song.pause();
-  }
-}); 
-$('body').on('keypress',function(event) {
-    if (event.keyCode == 32)
-        {
-  var song = document.querySelector('audio');
-    
-  if(song.paused == true) {
-    console.log('Playing');
-  $('.play-icon').removeClass('fa-play');
-  $('.play-icon').addClass('fa-pause');
-    song.play();
-  }
-  else {
-    console.log('Pausing');
-     $('.play-icon').removeClass('fa-pause');
-  $('.play-icon').addClass('fa-play');
-    song.pause();
-  }
+    $('.welcome-screen button').on('click', function() {
+        var name = $('#name-input').val();
+        if (name.length > 2) {
+            var message = "Welcome, " + name;
+            $('.main .user-name').text(message);
+            $('.welcome-screen').addClass('hidden');
+            $('.main').removeClass('hidden');
+        } else {
+            $('#name-input').addClass('error');
         }
-}); 
+    });
+    $('.play-icon').on('click', function() {
+        var song = document.querySelector('audio');
+        if (song.paused == true) {
+            console.log('Playing');
+            $('.play-icon').removeClass('fa-play').addClass('fa-pause');
+            song.play();
+        } else {
+            console.log('Pausing');
+            $('.play-icon').removeClass('fa-pause').addClass('fa-play');
+            song.pause();
+        }
+    });
+        function updateCurrentTime() {
+  var song = document.querySelector('audio');
+  console.log(song.currentTime);
+  console.log(song.duration);
+}
 
-        
-</script>
+window.onload = function() {
+  updateCurrentTime()
+}
+
+    $('body').on('keypress', function(event) {
+                if (event.keyCode == 32) {
+                    var song = document.querySelector('audio');
+                    if (song.paused == true) {
+                        console.log('Playing');
+                        $('.play-icon').removeClass('fa-play').addClass('fa-pause');
+                        song.play();
+                    } else {
+                        console.log('Pausing');
+                        $('.play-icon').removeClass('fa-pause').addClass('fa-play');
+                        song.pause();
+                    }
+                }
+            });
+    </script>
 </body>
 
 </html>
