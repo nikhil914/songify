@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    
-    error {
-      border: 2px solid red;
-  }
-    body
-    {
-        background-color: aqua;
-    }
-   
-    </style>
+
 <head>
     <meta charset="UTF-8">
     <title> Song App</title>
@@ -30,10 +20,18 @@
         </section>
         <div class="main hidden">
             <header>
+                 <button> Home </button>
                 <div class="right floated user-name"> </div>
             </header>
             <section class="content">
-                <audio src="song.mp3"></audio>
+                
+        
+ 
+                <audio src="song1.mp3"></audio>
+                <audio src="song2.mp3"></audio>
+                <audio src="song3.mp3"></audio>
+                <audio src="song4.mp3"></audio>
+
                 <div class="list-headers">
         <div> Title </div> 
         <div> Artist </div>
@@ -41,19 +39,48 @@
         <div> Duration </div>
         </div>
         <div class="song-list">
-        <div class="song">
-        <span class="song-name"></span>
-        <span class="song-artist"></span>
-        <span class="song-album"></span>
-        <span class="song-length"></span>
+        <div id="song1" class="song">
+          <span class="song-name"> </span>
+          <span class="song-artist"> </span>
+          <span class="song-album"> </span>
+          <span class="song-length"> </span>
+        </div>
+
+        <div id="song2" class="song">
+          <span class="song-name"> </span>
+          <span class="song-artist"> </span>
+          <span class="song-album"> </span>
+          <span class="song-length"> </span>
+        </div>
+            
+        <div id="song3" class="song">
+          <span class="song-name"> </span>
+          <span class="song-artist"> </span>
+          <span class="song-album"> </span>
+          <span class="song-length"> </span>
+        </div>
+            
+        <div id="song4" class="song">
+          <span class="song-name"> </span>
+          <span class="song-artist"> </span>
+          <span class="song-album"> </span>
+          <span class="song-length"> </span>
         </div>
         </div>
+    <div class="current-song-wrapper">
+    <img  class="current-song-image">
+    <div>
+      <p class="current-song-name"></p>
+      <p class="current-song-album"></p>
+    </div>
+  </div>
             </section>
             <footer>
                 <div class="controls">
                     <div class="player-buttons">
                         <i class="fa fa-play clickable play-icon" aria-hidden="true"></i>
                     </div>
+                     
                     <div class="progress-wrapper">
                         <span class="time-elapsed"> </span>
                         <div class="player-progress">
@@ -67,55 +94,7 @@
     </div>
     <script src="jquery.js">
     </script>
-    <script>
-    $('.welcome-screen button').on('click', function() {
-        var name = $('#name-input').val();
-        if (name.length > 2) {
-            var message = "Welcome, " + name;
-            $('.main .user-name').text(message);
-            $('.welcome-screen').addClass('hidden');
-            $('.main').removeClass('hidden');
-        } else {
-            $('#name-input').addClass('error');
-        }
-    });
-    $('.play-icon').on('click', function() {
-        var song = document.querySelector('audio');
-        if (song.paused == true) {
-            console.log('Playing');
-            $('.play-icon').removeClass('fa-play').addClass('fa-pause');
-            song.play();
-        } else {
-            console.log('Pausing');
-            $('.play-icon').removeClass('fa-pause').addClass('fa-play');
-            song.pause();
-        }
-    });
-        function updateCurrentTime() {
-  var song = document.querySelector('audio');
-  console.log(song.currentTime);
-  console.log(song.duration);
-}
-
-window.onload = function() {
-  updateCurrentTime()
-}
-
-    $('body').on('keypress', function(event) {
-                if (event.keyCode == 32) {
-                    var song = document.querySelector('audio');
-                    if (song.paused == true) {
-                        console.log('Playing');
-                        $('.play-icon').removeClass('fa-play').addClass('fa-pause');
-                        song.play();
-                    } else {
-                        console.log('Pausing');
-                        $('.play-icon').removeClass('fa-pause').addClass('fa-play');
-                        song.pause();
-                    }
-                }
-            });
-    </script>
+  <script src="main.js"></script>
 </body>
 
 </html>
