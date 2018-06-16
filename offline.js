@@ -1,41 +1,3 @@
- var recognition = new webkitSpeechRecognition();
-$('#start_img').on('click', function ()
-    {
-    recognition.start();
-  }) ;
- var finalText = '' ;
-    recognition.onresult = function(event) 
-    {
-      for (var i = event.resultIndex; i < event.results.length; ++i) 
-      {
-        if (event.results[i].isFinal) 
-        {
-          finalText += event.results[i][0].transcript;
-        }
-      }
-
-    };
-
- /*  recognition.onend = function () 
-   {
-      callWit(finalText) ;
-    }
-     function callWit(text) {
-        $.ajax({
-         url: 'https://api.wit.ai/message',
-         data: {
-           'q': text ,
-           'access_token' : I27ROTDJJSRFIYURKBEZPLVQKDTAFPSN
-         },
-         dataType: 'jsonp',
-         method: 'GET',
-         success: function(response) {
-             console.log("success!", response);
-         }
-       });
-   }
-  
-  */
 
 function fancyTimeFormat(time)
 {   
@@ -47,8 +9,7 @@ function fancyTimeFormat(time)
     // Output like "1:01" or "4:03:59" or "123:03:59"
     var ret = "";
 
-    if (hrs > 0) 
-    {
+    if (hrs > 0) {
         ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
     }
 
@@ -56,8 +17,7 @@ function fancyTimeFormat(time)
     ret += "" + secs;
     return ret;
 }
-function updateCurrentTime() 
-{
+     function updateCurrentTime() {
   var song = document.querySelector('audio');
   
  var currentTime = Math.floor(song.currentTime);
@@ -67,10 +27,47 @@ var duration = Math.floor(song.duration);
   $('.time-elapsed').text(currentTime);
   $('.song-duration').text(duration);
 }
-/*
-window.onload = function() 
+var songs = [
+  {
+    'name': 'Badri Ki Dulhania (Title Track)',
+    'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
+    'album': 'Badrinath ki Dulhania',
+    'duration': '2:56',
+   'fileName': 'song1.mp3',
+    'image': 'song1.jpg'
+  },
+  {
+    'name': 'Humma Song',
+    'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
+    'album': 'Ok Jaanu',
+    'duration': '3:15',
+    'fileName': 'song2.mp3',
+    'image': 'song2.jpg'
+  },
+    
 {
- changeCurrentSongDetails(songs[0]);
+  'name': 'Nashe Si Chadh Gayi',
+  'artist': 'Arijit Singh',
+  'album': 'Befikre',
+  'duration': '2:34',
+  'fileName': 'song3.mp3',
+  'image': 'song3.jpg'
+},
+ {
+  'name': 'The Breakup Song',
+  'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
+  'album': 'Ae Dil Hai Mushkil',
+  'duration': '2:29',
+  'fileName': 'song4.mp3',
+  'image': 'song4.jpg'
+}
+    
+  
+]
+
+window.onload = function() {
+    
+    changeCurrentSongDetails(songs[0]);
   for(var i =0; i < songs.length;i++) {
     var obj = songs[i];
     var name = '#song' + (i+1);
@@ -87,7 +84,6 @@ window.onload = function()
     updateCurrentTime();
   },1000);
 }
-*/
     $('.welcome-screen button').on('click', function() {
         var name = $('#name-input').val();
         if (name.length > 2) {
@@ -128,7 +124,7 @@ for (var i = 1; i <= fileNames.length ; i++) {
 
 
         
-         $('.home').on('click', function() {
+         $('.main button').on('click', function() {
             $('.main ').addClass('hidden');
             $('.welcome-screen').removeClass('hidden');
            
@@ -165,47 +161,12 @@ for (var i = 1; i <= fileNames.length ; i++) {
    }
 } 
  function changeCurrentSongDetails(songObj) {
-  $('.current-song-image').attr('src',songObj.image) ;
+  $('.current-song-image').attr('src', songObj.image) ;
   $('.current-song-name').text(songObj.name) ;
   $('.current-song-album').text(songObj.album) ;
 }
-function setupApp() {
-  changeCurrentSongDetails(songs[0]);
-
-  setInterval(function() {
-    updateCurrentTime() ;
-  }) ;
 
 
-  for(var i =0; i < songs.length;i++) {
-    var obj = songs[i];
-    var name = '#song' + (i+1);
-    var song = $(name);
-    song.find('.song-name').text(obj.name);
-    song.find('.song-artist').text(obj.artist);
-    song.find('.song-album').text(obj.album);
-    song.find('.song-length').text(obj.duration);
-    addSongNameClickEvent(obj,i+1) ;
-  }
-}
-    
- // Empty the songs variable
-    var songs = [] ;
-
-  function fetchSongs() {
-
-      $.ajax({
-        'url': 'https://api.jsonbin.io/b/59f713154ef213575c9f652f',
-        'dataType': 'json',
-        'method': 'GET',
-        'success': function (responseData) {
-         songs = responseData ;
-        setupApp() ;
-          console.log(responseData) ;
-        }
-      }) ;
-
-    }
 
    
 

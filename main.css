@@ -40,7 +40,9 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url(2.jpg);
+    background-image: url(anim2.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .main {
@@ -50,6 +52,11 @@ h1 {
     flex-direction: column;
     color: white;
     background-color: #1f1f1f;
+    background-image: url(anim5.gif);
+     background-repeat: no-repeat;
+    background-size: cover;
+    
+
 }
 
 .main header {
@@ -57,17 +64,21 @@ h1 {
     background-color: #282828;
     padding: 1rem;
     color: #FFF;
+     
 }
 
 .main .content {
     flex:1;
-    background-color: #1f1f1f;
+    background-image: url(anim5.gif);
+     background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .main footer {
     height: 80px;
     background-color: #282828;
     padding-top: 1rem;
+     background-color: black;
 }
 
 .player-buttons {
